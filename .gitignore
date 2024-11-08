@@ -1,4 +1,5 @@
 .idea/
 *.iml
-out/
-target/
+.gradle
+build
+scripts
