@@ -36,6 +36,12 @@ tasks.withType<Test> {
     systemProperty("line.separator", "\n")
 }
 
+tasks.register<JavaExec>("runToyLanguage") {
+    mainClass.set("org.example.toylanguage.RunToyLanguage")
+    classpath = sourceSets["main"].runtimeClasspath
+    standardInput = System.`in`
+}
+
 publishing {
     publications.create<MavenPublication>("maven") {
         from(components["java"])
