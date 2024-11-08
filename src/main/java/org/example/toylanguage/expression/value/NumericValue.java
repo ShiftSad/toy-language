@@ -8,7 +8,7 @@ public class NumericValue extends ComparableValue<Double> {
     @Override
     public String toString() {
         if ((getValue() % 1) == 0)
-            return String.valueOf(getValue()).split("\\.")[0];
+            return String.format("%.0f", getValue());
         return super.toString();
     }
 }
