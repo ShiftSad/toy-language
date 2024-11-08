@@ -42,6 +42,12 @@ tasks.register<JavaExec>("runToyLanguage") {
     standardInput = System.`in`
 }
 
+tasks.register<JavaExec>("runServer") {
+    mainClass.set("codes.shiftmc.coding.server.Server")
+    classpath = sourceSets["main"].runtimeClasspath
+    standardInput = System.`in`
+}
+
 publishing {
     publications.create<MavenPublication>("maven") {
         from(components["java"])
