@@ -21,6 +21,7 @@ dependencies {
 
     implementation(libs.net.minestom)
     implementation(libs.org.slf4j)
+    implementation(libs.ch.qos.logback)
 
     testImplementation(libs.org.junit.jupiter)
 }

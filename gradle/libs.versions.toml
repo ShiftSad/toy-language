@@ -7,7 +7,7 @@ org-apache-commons = "3.17.0"
 org-junit-jupiter = "5.11.3"
 net-minestom = "b9780c8603"
 org-slf4j = "2.1.0-alpha1"
-org-tinylog-slf4j = "2.8.0-M1"
+ch-qos-logback = "1.5.12"
 
 [libraries]
 org-projectlombok-lombok = { module = "org.projectlombok:lombok", version.ref = "org-projectlombok-lombok" }
@@ -15,4 +15,4 @@ org-apache-commons = { module = "org.apache.commons:commons-lang3", version.ref 
 org-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "org-junit-jupiter" }
 net-minestom = { module = "net.minestom:minestom-snapshots", version.ref = "net-minestom" }
 org-slf4j = { module = "org.slf4j:slf4j-api", version.ref = "org-slf4j" }
-org-tinylog-slf4j = { module = "org.tinylog:slf4j-tinylog", version.ref = "org-tinylog-slf4j" }
+ch-qos-logback = { module = "ch.qos.logback:logback-classic", version.ref = "ch-qos-logback" }
