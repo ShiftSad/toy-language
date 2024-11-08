@@ -16,7 +16,7 @@ public class RunToyLanguage {
             var input = scanner.nextLine();
 
             Path sourceFilePath = FileSystems.getDefault().getPath(input);
-            if (Files.exists(sourceFilePath)) new ToyLanguage().execute(sourceFilePath);
+            if (Files.exists(sourceFilePath)) new ToyLanguage(null, null).execute(sourceFilePath);
             else log.info("Could not resolve {} as a valid file.", sourceFilePath);
         }
     }

@@ -82,9 +82,6 @@ public class StatementParser {
             case "print":
                 parsePrintStatement(token);
                 break;
-            case "input":
-                parseInputStatement(token);
-                break;
             case "if":
                 parseConditionStatement(token);
                 break;
@@ -123,12 +120,6 @@ public class StatementParser {
     private void parsePrintStatement(Token rowToken) {
         Expression expression = ExpressionReader.readExpression(tokens);
         PrintStatement statement = new PrintStatement(rowToken.getRowNumber(), compositeStatement.getBlockName(), expression);
-        compositeStatement.addStatement(statement);
-    }
-
-    private void parseInputStatement(Token rowToken) {
-        Token variable = tokens.next(TokenType.Variable);
-        InputStatement statement = new InputStatement(rowToken.getRowNumber(), compositeStatement.getBlockName(), variable.getValue(), scanner::nextLine);
         compositeStatement.addStatement(statement);
     }
 
