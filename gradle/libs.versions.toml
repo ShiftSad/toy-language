@@ -2,13 +2,11 @@
 # https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
 
 [versions]
-org-apache-commons-commons-lang3 = "3.12.0"
-org-junit-jupiter-junit-jupiter-api = "5.9.2"
-org-junit-jupiter-junit-jupiter-engine = "5.9.2"
-org-projectlombok-lombok = "1.18.26"
+org-projectlombok-lombok = "1.18.34"
+org-apache-commons = "3.17.0"
+org-junit-jupiter = "5.11.3"
 
 [libraries]
-org-apache-commons-commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "org-apache-commons-commons-lang3" }
-org-junit-jupiter-junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "org-junit-jupiter-junit-jupiter-api" }
-org-junit-jupiter-junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "org-junit-jupiter-junit-jupiter-engine" }
 org-projectlombok-lombok = { module = "org.projectlombok:lombok", version.ref = "org-projectlombok-lombok" }
+org-apache-commons = { module = "org.apache.commons:commons-lang3", version.ref = "org-apache-commons" }
+org-junit-jupiter = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "org-junit-jupiter" }

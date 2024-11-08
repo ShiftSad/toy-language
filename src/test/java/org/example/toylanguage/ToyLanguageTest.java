@@ -178,8 +178,8 @@ class ToyLanguageTest {
 
             assertEquals("Do something useful ...\n" +
                     "MyBusinessException [ message = A message that describes the error. ]\n" +
-                    "    at do_something_else:14\n" +
-                    "    at perform_business_operation:5\n" +
+                    "    at do_something_else:27\n" +
+                    "    at perform_business_operation:9\n" +
                     "    at raise_exception.toy:1\n", baos.toString());
         }
     }

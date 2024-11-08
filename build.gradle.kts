@@ -11,26 +11,26 @@ plugins {
 
 repositories {
     mavenLocal()
-    maven {
-        url = uri("https://repo.maven.apache.org/maven2")
-    }
-
-    maven {
-        url = uri("https://repo.maven.apache.org/maven2/")
-    }
+    mavenCentral()
 }
 
 dependencies {
-    api(libs.org.apache.commons.commons.lang3)
-    testImplementation(libs.org.junit.jupiter.junit.jupiter.engine)
-    testImplementation(libs.org.junit.jupiter.junit.jupiter.api)
     compileOnly(libs.org.projectlombok.lombok)
+    annotationProcessor(libs.org.projectlombok.lombok)
+    implementation(libs.org.apache.commons)
+
+    testImplementation(libs.org.junit.jupiter)
 }
 
 group = "org.example"
 version = "0.0.10"
 description = "toy-language"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_21
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+    systemProperty("line.separator", "\n")
+}
 
 publishing {
     publications.create<MavenPublication>("maven") {
