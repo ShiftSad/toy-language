@@ -284,11 +284,12 @@ Firstly, compile and package the program into a uber jar, go to the ./target fol
 
 java -cp toy-language.jar org.example.toylanguage.RunToyLanguage ../src/test/resources/stack.toy
 
-# Todo
-[] Make ToyLanguage instance dependent, so it can interact with the Minecraft world
-[] Run code on another thread. (maybe even access Minecraft stuff parallelized)
-[] Dockerize, so I can run multiple servers in a sandboxed state
-[] Web interface for code interaction
-[] Code highlighting for web interface
-[] Spring backend for uploading and downloading scripts, authentication and interactions
-[] Minecraft specific api
+## Todo
+
+- [ ] Make `ToyLanguage` instance dependent, so it can interact with the Minecraft world
+- [ ] Run code on another thread (maybe even access Minecraft stuff parallelized)
+- [ ] Dockerize, so I can run multiple servers in a sandboxed state
+- [ ] Web interface for code interaction
+- [ ] Code highlighting for web interface
+- [ ] Spring backend for uploading and downloading scripts, authentication, and interactions
+- [ ] Minecraft-specific API
