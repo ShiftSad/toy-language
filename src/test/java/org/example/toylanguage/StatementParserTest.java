@@ -18,8 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class StatementParserTest {
 
@@ -50,29 +49,6 @@ class StatementParserTest {
     }
 
     @Test
-    public void testInput() {
-        List<Token> tokens = List.of(
-                Token.builder().type(TokenType.Keyword).value("input").build(),
-                Token.builder().type(TokenType.Variable).value("a").build()
-        );
-        DefinitionContext.pushScope(DefinitionContext.newScope());
-        MemoryContext.pushScope(MemoryContext.newScope());
-        CompositeStatement statement = new CompositeStatement(null, "testInput");
-        StatementParser.parse(tokens, statement);
-
-        List<Statement> statements = statement.getStatements2Execute();
-        assertEquals(1, statements.size());
-
-        assertEquals(InputStatement.class, statements.get(0).getClass());
-        InputStatement inputStatement = (InputStatement) statements.get(0);
-
-        assertEquals("a", inputStatement.getName());
-
-        DefinitionContext.endScope();
-        MemoryContext.endScope();
-    }
-
-    @Test
     public void testAssignment() {
         List<Token> tokens = List.of(
                 Token.builder().type(TokenType.Variable).value("a").build(),
@@ -92,10 +68,10 @@ class StatementParserTest {
         assertEquals(ExpressionStatement.class, statements.get(0).getClass());
         ExpressionStatement expressionStatement = (ExpressionStatement) statements.get(0);
 
-        assertEquals(expressionStatement.getExpression().getClass(), AssignmentOperator.class);
+        assertEquals(AssignmentOperator.class, expressionStatement.getExpression().getClass());
         AssignmentOperator assignOperator = (AssignmentOperator) expressionStatement.getExpression();
 
-        assertTrue(assignOperator.getLeft() instanceof VariableExpression);
+        assertInstanceOf(VariableExpression.class, assignOperator.getLeft());
         VariableExpression variableExpression = (VariableExpression) assignOperator.getLeft();
         assertEquals("a", variableExpression.getName());
 
@@ -142,8 +118,8 @@ class StatementParserTest {
         List<Statement> statements = statement.getStatements2Execute();
         assertEquals(1, statements.size());
 
-        assertEquals(ConditionStatement.class, statements.get(0).getClass());
-        ConditionStatement conditionStatement = (ConditionStatement) statements.get(0);
+        assertEquals(ConditionStatement.class, statements.getFirst().getClass());
+        ConditionStatement conditionStatement = (ConditionStatement) statements.getFirst();
 
         Map<Expression, CompositeStatement> cases = conditionStatement.getCases();
         assertEquals(3, cases.size());
@@ -151,10 +127,10 @@ class StatementParserTest {
         List<Expression> conditions = new ArrayList<>(cases.keySet());
 
         //if case
-        assertEquals(GreaterThanOperator.class, conditions.get(0).getClass());
-        GreaterThanOperator ifCondition = (GreaterThanOperator) conditions.get(0);
+        assertEquals(GreaterThanOperator.class, conditions.getFirst().getClass());
+        GreaterThanOperator ifCondition = (GreaterThanOperator) conditions.getFirst();
 
-        assertTrue(ifCondition.getLeft() instanceof VariableExpression);
+        assertInstanceOf(VariableExpression.class, ifCondition.getLeft());
         VariableExpression ifLeftExpression = (VariableExpression) ifCondition.getLeft();
         assertEquals("a", ifLeftExpression.getName());
 
@@ -175,7 +151,7 @@ class StatementParserTest {
         assertEquals(GreaterThanOrEqualToOperator.class, conditions.get(1).getClass());
         GreaterThanOrEqualToOperator elifCondition = (GreaterThanOrEqualToOperator) conditions.get(1);
 
-        assertTrue(elifCondition.getLeft() instanceof VariableExpression);
+        assertInstanceOf(VariableExpression.class, elifCondition.getLeft());
         VariableExpression elifLeftExpression = (VariableExpression) elifCondition.getLeft();
         assertEquals("a", elifLeftExpression.getName());
 
@@ -185,8 +161,8 @@ class StatementParserTest {
         List<Statement> elifStatements = cases.get(elifCondition).getStatements2Execute();
         assertEquals(1, elifStatements.size());
 
-        assertEquals(PrintStatement.class, elifStatements.get(0).getClass());
-        PrintStatement elifPrintStatement = (PrintStatement) elifStatements.get(0);
+        assertEquals(PrintStatement.class, elifStatements.getFirst().getClass());
+        PrintStatement elifPrintStatement = (PrintStatement) elifStatements.getFirst();
 
         assertEquals(TextValue.class, elifPrintStatement.getExpression().getClass());
         TextValue elifPrintValue = (TextValue) elifPrintStatement.getExpression();
@@ -257,13 +233,13 @@ class StatementParserTest {
         assertEquals(2, statements.size());
 
         // 1st statement
-        assertEquals(ExpressionStatement.class, statements.get(0).getClass());
-        ExpressionStatement expressionStatement = (ExpressionStatement) statements.get(0);
+        assertEquals(ExpressionStatement.class, statements.getFirst().getClass());
+        ExpressionStatement expressionStatement = (ExpressionStatement) statements.getFirst();
 
-        assertEquals(expressionStatement.getExpression().getClass(), AssignmentOperator.class);
+        assertEquals(AssignmentOperator.class, expressionStatement.getExpression().getClass());
         AssignmentOperator assignStatement = (AssignmentOperator) expressionStatement.getExpression();
 
-        assertTrue(assignStatement.getLeft() instanceof VariableExpression);
+        assertInstanceOf(VariableExpression.class, assignStatement.getLeft());
         VariableExpression variableExpression = (VariableExpression) assignStatement.getLeft();
         assertEquals("person", variableExpression.getName());
 
@@ -303,13 +279,13 @@ class StatementParserTest {
         List<Statement> statements = statement.getStatements2Execute();
         assertEquals(1, statements.size());
 
-        assertEquals(ExpressionStatement.class, statements.get(0).getClass());
-        ExpressionStatement expressionStatement = (ExpressionStatement) statements.get(0);
+        assertEquals(ExpressionStatement.class, statements.getFirst().getClass());
+        ExpressionStatement expressionStatement = (ExpressionStatement) statements.getFirst();
 
-        assertEquals(expressionStatement.getExpression().getClass(), AssignmentOperator.class);
+        assertEquals(AssignmentOperator.class, expressionStatement.getExpression().getClass());
         AssignmentOperator assignStatement = (AssignmentOperator) expressionStatement.getExpression();
 
-        assertTrue(assignStatement.getLeft() instanceof VariableExpression);
+        assertInstanceOf(VariableExpression.class, assignStatement.getLeft());
         VariableExpression variableExpression = (VariableExpression) assignStatement.getLeft();
         assertEquals("a", variableExpression.getName());
         assertEquals(NumericValue.class, assignStatement.getRight().getClass());

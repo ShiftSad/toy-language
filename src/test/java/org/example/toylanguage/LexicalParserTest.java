@@ -78,13 +78,14 @@ class LexicalParserTest {
     @Test
     public void testCondition() {
 
-        String source = "if a > 5\n" +
-                        "    print \"a is greater than 5\"\n" +
-                        "elif a >= 1\n" +
-                        "    print \"a is greater than or equal to 1\"\n" +
-                        "else\n" +
-                        "    print \"a is less than 1\"\n" +
-                        "end";
+        String source = """
+            if a > 5
+                print "a is greater than 5"
+            elif a >= 1
+                print "a is greater than or equal to 1"
+            else
+                print "a is less than 1"
+            end""";
         List<Token> tokens = LexicalParser.parse(source);
 
         assertEquals(22, tokens.size());
@@ -182,10 +183,11 @@ class LexicalParserTest {
     @Test
     public void testClass() {
 
-        String source = "class Person [ name, age ]\n" +
-                        "end\n" +
-                        "person = new Person[\"Randy Marsh\", 45]\n" +
-                        "print person :: name + \" is \" + person :: age + \" years old\"";
+        String source = """
+            class Person [ name, age ]
+            end
+            person = new Person["Randy Marsh", 45]
+            print person :: name + " is " + person :: age + " years old\"""";
         List<Token> tokens = LexicalParser.parse(source);
 
         assertEquals(32, tokens.size());

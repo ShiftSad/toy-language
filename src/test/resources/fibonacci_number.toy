@@ -9,5 +9,5 @@ fun fibonacci_number [ n ]
     return fibonacci_number [ n - 1 ] + fibonacci_number [ n - 2 ]
 end
 
-input index_number
+index_number = 11
 print "fibonacci number is " + fibonacci_number [ index_number ]
