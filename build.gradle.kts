@@ -19,6 +19,9 @@ dependencies {
     annotationProcessor(libs.org.projectlombok.lombok)
     implementation(libs.org.apache.commons)
 
+    implementation(libs.net.minestom)
+    implementation(libs.org.slf4j)
+
     testImplementation(libs.org.junit.jupiter)
 }
 
