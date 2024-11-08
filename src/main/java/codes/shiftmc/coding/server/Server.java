@@ -12,7 +12,7 @@ public class Server {
     public static void main(String[] args) {
         System.setProperty("minestom.chunk-view-distance", "16");
         var server = MinecraftServer.init();
-        MinecraftServer.setBrandName("CraftSapiens - ShiftSad");
+        MinecraftServer.setBrandName("ShiftSad");
 
         InstanceManager instanceManager = MinecraftServer.getInstanceManager();
         InstanceContainer instance = instanceManager.createInstanceContainer();

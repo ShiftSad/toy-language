@@ -1,0 +1,18 @@
+input first
+input second
+input operation
+
+if operation == "sum"
+    print first + second
+elif operation == "div"
+    print first / second
+elif operation == "mult"
+    print first * second
+elif operation == "sub"
+    print first - second
+elif operation == "power"
+    print first ** second
+else
+    print "Operation not found"
+end
+
